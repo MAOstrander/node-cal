@@ -1,0 +1,23 @@
+{
+  "name": "node-cal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cal.js",
+  "scripts": {
+    "test": "mocha --harmony_destructuring tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MAOstrander/node-cal.git"
+  },
+  "author": "Mathew Ostrander <mathew.ostrander@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MAOstrander/node-cal/issues"
+  },
+  "homepage": "https://github.com/MAOstrander/node-cal#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}
