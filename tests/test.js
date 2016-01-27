@@ -94,5 +94,12 @@ describe('cal', () => {
     //2000, 11, 1 === 4
   });
 
+  describe('centering the month', () => {
+    it("should handle January", () => {
+      expect(center('January 2016')).to.equal('    January 2016');
+    }
+    it("should handle February", () => {
+      expect(center('February 2016')).to.equal('   February 2016');
+    }
 });
 
