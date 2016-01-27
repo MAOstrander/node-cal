@@ -7,15 +7,20 @@ const createMonth = require('./lib/month.js');
 const [ , , ...args] = process.argv;
 
 if (args.length === 2) {
-  const [month, year] = args;
+  const month = parseInt(args[0]);
+  const year = parseInt(args[1]);
 
-  console.log(`generateMonth(${year}, ${month})`);
+  console.log(`${createMonth.joinOutput(year, month)}`);
 } else if (args.length === 1) {
-  const [year] = args;
+  const year = parseInt(args[0]);
 
   console.log(`generateYear(${year})`);
 } else {
-  console.log('Hi from cal');
+  let timeNow = new Date();
+  let thisMonth = timeNow.getMonth()+1;
+  let thisYear = timeNow.getFullYear();
+
+  console.log(createMonth.joinOutput(thisYear, thisMonth));
 }
 
 

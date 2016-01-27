@@ -6,7 +6,7 @@ const createMonth = require('../lib/month.js');
 const leap = require('../lib/isLeap.js');
 
 describe('cal', () => {
-  xdescribe('CLI', () => {
+  describe('CLI', () => {
    it('should display the current month', () => {
       const goal = execSync('cal').toString();
       const ourOutput = execSync('./cal.js').toString();
