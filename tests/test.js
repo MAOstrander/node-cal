@@ -2,6 +2,7 @@
 const { expect } = require('chai');
 const { execSync } = require('child_process');
 const zellers = require('../lib/zeller.js');
+const createMonth = require('../lib/month.js');
 
 describe('cal', () => {
   describe('CLI', () => {
