@@ -4,6 +4,7 @@
 const zellers = require('./lib/zeller.js');
 const createMonth = require('./lib/month.js');
 const processArgs = require('./lib/processArgs.js');
+const justYear = require('./lib/year.js');
 
 const [ , , ...args] = process.argv;
 
@@ -15,7 +16,10 @@ if (args.length === 2) {
 } else if (args.length === 1) {
   const year = processArgs.checkYear(parseInt(args[0]));
 
-  console.log(`generateYear(${year})`);
+  var test = justYear.createYearHeader(2016);
+  console.log(test);
+  console.log(justYear.reformatMonth());
+
 } else if (args.length === 0) {
   let timeNow = new Date();
   let thisMonth = timeNow.getMonth()+1;

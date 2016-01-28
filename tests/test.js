@@ -4,6 +4,7 @@ const { execSync } = require('child_process');
 const zellers = require('../lib/zeller.js');
 const createMonth = require('../lib/month.js');
 const leap = require('../lib/isLeap.js');
+const justYear = require('../lib/year.js');
 
 describe('cal', () => {
   describe('CLI', () => {
@@ -165,5 +166,22 @@ describe('cal', () => {
     });
   });
 
+
+  describe('Full year function', () => {
+
+    xit('if a year is entered it should display the chosen year', () => {
+      const goal = execSync('cal 2016').toString();
+      const ourOutput = execSync('./cal.js 2016').toString();
+
+      expect(ourOutput).to.equal(goal);
+    });
+
+
+    it('if 2016 is entered it should create a 2016 header and a line of space', () => {
+      const goal = `                             2016\n\n`;
+
+      expect(justYear.createYearHeader(2016)).to.equal(goal);
+    });
+  });
 });
 
