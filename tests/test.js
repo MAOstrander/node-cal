@@ -131,37 +131,37 @@ describe('cal', () => {
   describe('How many days are in a given month?', () => {
     //30 day month (11/2015)
     it("if the month has 30 days, func should return 30", () => {
-      expect(createMonth.howManyDays(11, 2015)).to.equal(30);
+      expect(createMonth.howManyDays(2015, 11)).to.equal(30);
     });
     //31 day month (12/2015)
     it("if the month has 31 days, func should return 31", () => {
-      expect(createMonth.howManyDays(12, 2015)).to.equal(31);
+      expect(createMonth.howManyDays(2015, 12)).to.equal(31);
     });
 
     //29 day month (leap year) 2/2012
     it("if it is a leap year and feb, func should return 29", () => {
-      expect(createMonth.howManyDays(2, 2012)).to.equal(29);
+      expect(createMonth.howManyDays(2012, 2)).to.equal(29);
     });
 
     //28 day month (feb non leap year) 2/2014
     it("if it is feb and not a leap year, func should return 28", () => {
-      expect(createMonth.howManyDays(2, 2014)).to.equal(28);
+      expect(createMonth.howManyDays(2014, 2)).to.equal(28);
     });
   });
 
   describe('How many weeks are in a given month?', () => {
     //6 week month (8/2015)
     it("if the month has 6 weeks, func should return 6", () => {
-      expect(createMonth.weeks(8, 2015)).to.equal(6);
+      expect(createMonth.weeks(2015, 8)).to.equal(6);
     });
     //5 week month (10/2015)
     it("if the month has 5 weeks, func should return 5", () => {
-      expect(createMonth.weeks(10, 2015)).to.equal(5);
+      expect(createMonth.weeks(2015, 10)).to.equal(5);
     });
 
     //4 week month (2/2015)
     it("if the month is february and begins on a sunday, (4 weeks) func should return 4", () => {
-      expect(createMonth.weeks(2, 2015)).to.equal(4);
+      expect(createMonth.weeks(2015, 2)).to.equal(4);
     });
   });
 
