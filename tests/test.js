@@ -169,7 +169,7 @@ describe('cal', () => {
 
   describe('Full year function', () => {
 
-    xit('if a year is entered it should display the chosen year', () => {
+    it('if a year is entered it should display the chosen year', () => {
       const goal = execSync('cal 2016').toString();
       const ourOutput = execSync('./cal.js 2016').toString();
 
