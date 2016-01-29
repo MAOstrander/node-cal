@@ -4,7 +4,9 @@
   "description": "",
   "main": "cal.js",
   "scripts": {
-    "test": "mocha --harmony_destructuring tests"
+    "test": "mocha --harmony_destructuring tests",
+    "cover": "node --harmony_destructuring ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests",
+    "coveralls": "npm run cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,10 @@
   "homepage": "https://github.com/MAOstrander/node-cal#readme",
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "coveralls": "^2.11.6",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.3.4",
+    "mocha-lcov-reporter": "^1.0.0"
   },
   "dependencies": {
     "lodash": "^4.0.1"
