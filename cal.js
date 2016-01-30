@@ -9,13 +9,23 @@ const justYear = require('./lib/year.js');
 const [ , , ...args] = process.argv;
 
 if (args.length === 2) {
-  const month = processArgs.checkMonth(args[0]);
-  const year = processArgs.checkYear(parseInt(args[1]));
+  try{
+    var month = processArgs.checkMonth(args[0]);
+    var year = processArgs.checkYear(parseInt(args[1]));
+  } catch (e) {
+    console.log(e);
+    process.exit(64);
+  }
 
   console.log(`${createMonth.joinOutput(year, month)}`);
 
 } else if (args.length === 1) {
-  const year = processArgs.checkYear(parseInt(args[0]));
+  try{
+    var year = processArgs.checkYear(parseInt(args[0]));
+  } catch (e) {
+    console.log(e);
+    process.exit(64);
+  }
   const fullCal = justYear.outputFullCal(year);
 
   console.log(fullCal);
