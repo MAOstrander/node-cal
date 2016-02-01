@@ -187,7 +187,7 @@ describe('cal', () => {
       expect(ourOutput).to.equal(goal);
     });
     it('should give February if 2 is passed as the month', () => {
-      const goal = `    February 2016\n`;
+      const goal = `   February 2016\n`;
       const ourOutput = createMonth.createMonthHeader(2016, 2);
       expect(ourOutput).to.equal(goal);
     });

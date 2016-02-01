@@ -26,6 +26,8 @@
     "mocha-lcov-reporter": "^1.0.0"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.4.3",
     "lodash": "^4.0.1"
   }
 }
