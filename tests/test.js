@@ -162,14 +162,14 @@ describe('cal', () => {
       expect(createMonth.createWeeks(2000, 10).length).to.equal(5);
     });
     it("should take the array of weeks and join them into a single body", () => {
-      const goal = `    1  2  3  4  5  6\n 7  8  9 10 11 12 13\n14 15 16 17 18 19 20\n21 22 23 24 25 26 27\n28`;
+      const goal = `    1  2  3  4  5  6\n 7  8  9 10 11 12 13\n14 15 16 17 18 19 20\n21 22 23 24 25 26 27\n28 29 30 31\n`;
       expect(createMonth.rowPrint(createMonth.createWeeks(1999, 1))).to.be.a('string');
-      expect(createMonth.rowPrint(createMonth.createWeeks(1999, 2))).to.equal(goal);
+      expect(createMonth.rowPrint(createMonth.createWeeks(1999, 3))).to.equal(goal);
     });
 
     it("Take each smaller function to build a calendar line by line", () => {
-      const goal = `     April 1999\nSu Mo Tu We Th Fr Sa\n             1  2  3\n 4  5  6  7  8  9 10\n11 12 13 14 15 16 17\n18 19 20 21 22 23 24\n25 26 27 28 29 30`;
-      expect(createMonth.joinOutput(1999, 3)).to.be.a('string');
+      const goal = `     April 1999\nSu Mo Tu We Th Fr Sa\n             1  2  3\n 4  5  6  7  8  9 10\n11 12 13 14 15 16 17\n18 19 20 21 22 23 24\n25 26 27 28 29 30\n`;
+      expect(createMonth.joinOutput(1999, 2)).to.be.a('string');
       expect(createMonth.joinOutput(1999, 4)).to.equal(goal);
     });
 
