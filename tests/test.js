@@ -321,25 +321,26 @@ describe('cal', () => {
     });
 
     describe('Picking the correct headers per row', () => {
+      let os = 'darwin';
       it('should display January, February, and March in a single line', () => {
         const goal = `      January               February               March\n`;
-        expect(justYear.monthRows(1)).to.equal(goal);
+        expect(justYear.monthRows(1, os)).to.equal(goal);
       });
       it('should display April, May, June in a single line', () => {
         const goal = `       April                  May                   June\n`;
-        expect(justYear.monthRows(4)).to.equal(goal);
+        expect(justYear.monthRows(4, os)).to.equal(goal);
       });
       it('should display July, August, September in a single line', () => {
         const goal = `        July                 August              September\n`;
-        expect(justYear.monthRows(7)).to.equal(goal);
+        expect(justYear.monthRows(7, os)).to.equal(goal);
       });
       it('should display October, November, December in a single line', () => {
         const goal = `      October               November              December\n`;
-        expect(justYear.monthRows(10)).to.equal(goal);
+        expect(justYear.monthRows(10, os)).to.equal(goal);
       });
       it('should give an error if an incorrect row is passed in', () => {
         const goal = `something went wrong`;
-        expect(justYear.monthRows(3)).to.equal(goal);
+        expect(justYear.monthRows(3), 'darwin').to.equal(goal);
       });
     });
 
