@@ -159,7 +159,8 @@ describe('cal', () => {
 
   describe('Create an array of all the days in the month', () => {
     it("It should be an array of weeks, length = 6", () => {
-      expect(createMonth.createWeeks(2000, 10).length).to.equal(6);
+      const os = 'darwin';
+      expect(createMonth.createWeeks(2000, 10, os).length).to.equal(6);
     });
 
     it("Take each smaller function to build a calendar line by line", () => {
@@ -345,11 +346,12 @@ describe('cal', () => {
     });
 
     describe('Add padding to rows to allow each month to be equal sized', () => {
+      const os = 'darwin';
       it("It should be an array of 6 weeks if it started with 4 weeks", () => {
-        expect(justYear.padMonth( createMonth.createWeeks(2015, 2) ).length).to.equal(6);
+        expect(justYear.padMonth( createMonth.createWeeks(2015, 2, os) ).length).to.equal(6);
       });
       it("It should be an array of 6 weeks if it started with 6 weeks", () => {
-        expect(justYear.padMonth( createMonth.createWeeks(1753, 9) ).length).to.equal(6);
+        expect(justYear.padMonth( createMonth.createWeeks(1753, 9, os) ).length).to.equal(6);
       });
     });
   });
