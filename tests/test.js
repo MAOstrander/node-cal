@@ -177,69 +177,64 @@ describe('cal', () => {
   });
 
   describe('Make sure that the month header returns the appropriate month', () => {
-    it('if a non integer month is passed it should return an error', () => {
-      const goal = "Error";
-      const ourOutput = createMonth.createMonthHeader(2016, 'a');
-      expect(ourOutput).to.equal(goal);
-    });
     it('should give me January if 1 is passed as the month', () => {
       const goal = `    January 2016\n`;
-      const ourOutput = createMonth.createMonthHeader(2016, 1);
+      const ourOutput = createMonth.createMonthHeader(2016, 1, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give February if 2 is passed as the month', () => {
       const goal = `   February 2016\n`;
-      const ourOutput = createMonth.createMonthHeader(2016, 2);
+      const ourOutput = createMonth.createMonthHeader(2016, 2, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give me March if 3 is passed as the month', () => {
       const goal = `     March 2015\n`;
-      const ourOutput = createMonth.createMonthHeader(2015, 3);
+      const ourOutput = createMonth.createMonthHeader(2015, 3, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give April if 4 is passed as the month', () => {
       const goal = `     April 2015\n`;
-      const ourOutput = createMonth.createMonthHeader(2015, 4);
+      const ourOutput = createMonth.createMonthHeader(2015, 4, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give May if 5 is passed as the month', () => {
       const goal = `      May 2014\n`;
-      const ourOutput = createMonth.createMonthHeader(2014, 5);
+      const ourOutput = createMonth.createMonthHeader(2014, 5, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give June if 6 is passed as the month', () => {
       const goal = `      June 2014\n`;
-      const ourOutput = createMonth.createMonthHeader(2014, 6);
+      const ourOutput = createMonth.createMonthHeader(2014, 6, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give July if 7 is passed as the month', () => {
       const goal = `      July 2013\n`;
-      const ourOutput = createMonth.createMonthHeader(2013, 7);
+      const ourOutput = createMonth.createMonthHeader(2013, 7, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give August if 8 is passed as the month', () => {
       const goal = `    August 2013\n`;
-      const ourOutput = createMonth.createMonthHeader(2013, 8);
+      const ourOutput = createMonth.createMonthHeader(2013, 8, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give September if 9 is passed as the month', () => {
       const goal = `   September 2014\n`;
-      const ourOutput = createMonth.createMonthHeader(2014, 9);
+      const ourOutput = createMonth.createMonthHeader(2014, 9, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give October if 10 is passed as the month', () => {
       const goal = `    October 2014\n`;
-      const ourOutput = createMonth.createMonthHeader(2014, 10);
+      const ourOutput = createMonth.createMonthHeader(2014, 10, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give November 11 is passed as the month', () => {
       const goal = `    November 2013\n`;
-      const ourOutput = createMonth.createMonthHeader(2013, 11);
+      const ourOutput = createMonth.createMonthHeader(2013, 11, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
     it('should give December 12 is passed as the month', () => {
       const goal = `    December 2013\n`;
-      const ourOutput = createMonth.createMonthHeader(2013, 12);
+      const ourOutput = createMonth.createMonthHeader(2013, 12, 'darwin');
       expect(ourOutput).to.equal(goal);
     });
 
