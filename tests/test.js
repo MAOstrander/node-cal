@@ -158,13 +158,8 @@ describe('cal', () => {
   });
 
   describe('Create an array of all the days in the month', () => {
-    it("It should be an array of weeks, length = number of weeks", () => {
-      expect(createMonth.createWeeks(2000, 10).length).to.equal(5);
-    });
-    it("should take the array of weeks and join them into a single body", () => {
-      const goal = `    1  2  3  4  5  6\n 7  8  9 10 11 12 13\n14 15 16 17 18 19 20\n21 22 23 24 25 26 27\n28 29 30 31\n`;
-      expect(createMonth.rowPrint(createMonth.createWeeks(1999, 1))).to.be.a('string');
-      expect(createMonth.rowPrint(createMonth.createWeeks(1999, 3))).to.equal(goal);
+    it("It should be an array of weeks, length = 6", () => {
+      expect(createMonth.createWeeks(2000, 10).length).to.equal(6);
     });
 
     it("Take each smaller function to build a calendar line by line", () => {
