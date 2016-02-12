@@ -1,4 +1,6 @@
 "use strict";
+/* eslint no-magic-numbers: 0 */
+
 const { expect } = require('chai');
 const { execSync } = require('child_process');
 const zellers = require('../lib/zeller.js');
@@ -9,7 +11,7 @@ const para = require('../lib/processArgs.js');
 
 describe('cal', () => {
   describe('CLI', () => {
-   it('should display the current month', () => {
+    it('should display the current month', () => {
       const goal = execSync('cal').toString();
       const ourOutput = execSync('./cal.js').toString();
 
@@ -20,21 +22,21 @@ describe('cal', () => {
   describe("Zeller's congruence", () => {
     describe('.modified_month', () => {
 
-      //2012, 1 === 13
+      // 2012, 1 === 13
       it('return 13 for January', () => {
         const mod = zellers.modifiedMonth(2012, 1);
 
         expect(mod).to.equal(13);
       })
 
-      //2012, 2 === 14
+      // 2012, 2 === 14
       it('return 14 for February', () => {
         const mod = zellers.modifiedMonth(2012, 2);
 
         expect(mod).to.equal(14);
       })
 
-      //2012, 3 === 3
+      // 2012, 3 === 3
       it('return 3 for March', () => {
         const mod = zellers.modifiedMonth(2012, 3);
 
@@ -121,37 +123,37 @@ describe('cal', () => {
   });
 
   describe('How many days are in a given month?', () => {
-    //30 day month (11/2015)
+    // 30 day month (11/2015)
     it("if the month has 30 days, func should return 30", () => {
       expect(createMonth.howManyDays(2015, 11)).to.equal(30);
     });
-    //31 day month (12/2015)
+    // 31 day month (12/2015)
     it("if the month has 31 days, func should return 31", () => {
       expect(createMonth.howManyDays(2015, 12)).to.equal(31);
     });
 
-    //29 day month (leap year) 2/2012
+    // 29 day month (leap year) 2/2012
     it("if it is a leap year and feb, func should return 29", () => {
       expect(createMonth.howManyDays(2012, 2)).to.equal(29);
     });
 
-    //28 day month (feb non leap year) 2/2014
+    // 28 day month (feb non leap year) 2/2014
     it("if it is feb and not a leap year, func should return 28", () => {
       expect(createMonth.howManyDays(2014, 2)).to.equal(28);
     });
   });
 
   describe('How many weeks are in a given month?', () => {
-    //6 week month (8/2015)
+    // 6 week month (8/2015)
     it("if the month has 6 weeks, func should return 6", () => {
       expect(createMonth.weeks(2015, 8)).to.equal(6);
     });
-    //5 week month (10/2015)
+    // 5 week month (10/2015)
     it("if the month has 5 weeks, func should return 5", () => {
       expect(createMonth.weeks(2015, 10)).to.equal(5);
     });
 
-    //4 week month (2/2015)
+    // 4 week month (2/2015)
     it("if the month is february and begins on a sunday, (4 weeks) func should return 4", () => {
       expect(createMonth.weeks(2015, 2)).to.equal(4);
     });
@@ -235,23 +237,23 @@ describe('cal', () => {
     });
 
 
-  describe('Printing the days of the weeks at the top of each month', () => {
-    it('should print the days from Sunday to Saturday', () => {
-      const goal = `Su Mo Tu We Th Fr Sa`;
-      const os = 'darwin';
-      const ourOutput = createMonth.printDayColumns(os);
-      expect(ourOutput).to.equal(goal);
-    });
+    describe('Printing the days of the weeks at the top of each month', () => {
+      it('should print the days from Sunday to Saturday', () => {
+        const goal = `Su Mo Tu We Th Fr Sa`;
+        const os = 'darwin';
+        const ourOutput = createMonth.printDayColumns(os);
+        expect(ourOutput).to.equal(goal);
+      });
 
-    it('The days should be 20 characters in length', () => {
-      const os = 'darwin';
-      expect(createMonth.printDayColumns(os).length).to.equal(20);
+      it('The days should be 20 characters in length', () => {
+        const os = 'darwin';
+        expect(createMonth.printDayColumns(os).length).to.equal(20);
+      });
+      it('Sunday should be the first day of the week', () => {
+        const os = 'darwin';
+        expect(createMonth.printDayColumns(os).slice(0, 2)).to.equal("Su");
+      });
     });
-    it('Sunday should be the first day of the week', () => {
-      const os = 'darwin';
-      expect(createMonth.printDayColumns(os).slice(0,2)).to.equal("Su");
-    });
-  });
 
   });
 
@@ -322,7 +324,7 @@ describe('cal', () => {
     });
 
     describe('Picking the correct headers per row', () => {
-      let os = 'darwin';
+      const os = 'darwin';
       it('should display January, February, and March in a single line', () => {
         const goal = `      January               February               March\n`;
         expect(justYear.monthRows(1, os)).to.equal(goal);
@@ -357,74 +359,73 @@ describe('cal', () => {
   });
 
   describe('Make sure only proper variables are passed in', () => {
-      it("if the year is between 1753 and 9999, return the same year", () => {
-        expect(para.checkYear(2016)).to.equal(2016);
+    it("if the year is between 1753 and 9999, return the same year", () => {
+      expect(para.checkYear(2016)).to.equal(2016);
+    });
+    it("should only accept a year that is between 1753 and 9999", () => {
+      expect(para.checkYear.bind(para, 1752)).to.throw("Please enter a year between 1753 and 9999");
+      expect(para.checkYear.bind(para, 100000)).to.throw("Please enter a year between 1753 and 9999");
+    });
+    describe('check month', () => {
+      it("if the month entered is between 1 and 12, return an integer of that month", () => {
+        expect(para.checkMonth('1')).to.equal(1);
+        expect(para.checkMonth('1')).to.be.a('number');
       });
-      it("should only accept a year that is between 1753 and 9999", () => {
-        expect(para.checkYear.bind(para, 1752)).to.throw("Please enter a year between 1753 and 9999");
-        expect(para.checkYear.bind(para, 100000)).to.throw("Please enter a year between 1753 and 9999");
+      it("should only accept a month that is between 1 and 12", () => {
+        expect(para.checkMonth.bind(para, '1752')).to.throw("Please enter a month between 1 and 12");
+        expect(para.checkMonth.bind(para, '100000')).to.throw("Please enter a month between 1 and 12");
+        expect(para.checkMonth.bind(para, 'asdf')).to.throw("Please enter a month between 1 and 12");
       });
-      describe('check month', () => {
-        it("if the month entered is between 1 and 12, return an integer of that month", () => {
-          expect(para.checkMonth('1')).to.equal(1);
-          expect(para.checkMonth('1')).to.be.a('number');
-        });
-        it("should only accept a month that is between 1 and 12", () => {
-          expect(para.checkMonth.bind(para, '1752')).to.throw("Please enter a month between 1 and 12");
-          expect(para.checkMonth.bind(para, '100000')).to.throw("Please enter a month between 1 and 12");
-          expect(para.checkMonth.bind(para, 'asdf')).to.throw("Please enter a month between 1 and 12");
-        });
 
-        it("if jan (or Jan or January) is typed in return 1 for the month", () => {
-          expect(para.checkMonth('jan')).to.equal(1);
-          expect(para.checkMonth('jan')).to.be.a('number');
-        });
-        it("if feb is typed in, return 2 for the month", () => {
-          expect(para.checkMonth('feb')).to.equal(2);
-          expect(para.checkMonth('feb')).to.be.a('number');
-        });
-        it("if mar is typed in, return 3 for the month", () => {
-          expect(para.checkMonth('mar')).to.equal(3);
-          expect(para.checkMonth('mar')).to.be.a('number');
-        });
-        it("if apr is typed in, return 4 for the month", () => {
-          expect(para.checkMonth('apr')).to.equal(4);
-          expect(para.checkMonth('apr')).to.be.a('number');
-        });
-        it("if may is typed in, return 5 for the month", () => {
-          expect(para.checkMonth('may')).to.equal(5);
-          expect(para.checkMonth('may')).to.be.a('number');
-        });
-        it("if jun is typed in, return 6 for the month", () => {
-          expect(para.checkMonth('jun')).to.equal(6);
-          expect(para.checkMonth('jun')).to.be.a('number');
-        });
-        it("if jul is typed in, return 7 for the month", () => {
-          expect(para.checkMonth('jul')).to.equal(7);
-          expect(para.checkMonth('jul')).to.be.a('number');
-        });
-        it("if aug is typed in, return 8 for the month", () => {
-          expect(para.checkMonth('aug')).to.equal(8);
-          expect(para.checkMonth('aug')).to.be.a('number');
-        });
-        it("if sep is typed in, return 9 for the month", () => {
-          expect(para.checkMonth('sep')).to.equal(9);
-          expect(para.checkMonth('sep')).to.be.a('number');
-        });
-        it("if oct is typed in, return 10 for the month", () => {
-          expect(para.checkMonth('oct')).to.equal(10);
-          expect(para.checkMonth('oct')).to.be.a('number');
-        });
-        it("if nov is typed in, return 11 for the month", () => {
-          expect(para.checkMonth('nov')).to.equal(11);
-          expect(para.checkMonth('nov')).to.be.a('number');
-        });
-        it("if dec is typed in, return 12 for the month", () => {
-          expect(para.checkMonth('dec')).to.equal(12);
-          expect(para.checkMonth('dec')).to.be.a('number');
-        });
+      it("if jan (or Jan or January) is typed in return 1 for the month", () => {
+        expect(para.checkMonth('jan')).to.equal(1);
+        expect(para.checkMonth('jan')).to.be.a('number');
       });
+      it("if feb is typed in, return 2 for the month", () => {
+        expect(para.checkMonth('feb')).to.equal(2);
+        expect(para.checkMonth('feb')).to.be.a('number');
+      });
+      it("if mar is typed in, return 3 for the month", () => {
+        expect(para.checkMonth('mar')).to.equal(3);
+        expect(para.checkMonth('mar')).to.be.a('number');
+      });
+      it("if apr is typed in, return 4 for the month", () => {
+        expect(para.checkMonth('apr')).to.equal(4);
+        expect(para.checkMonth('apr')).to.be.a('number');
+      });
+      it("if may is typed in, return 5 for the month", () => {
+        expect(para.checkMonth('may')).to.equal(5);
+        expect(para.checkMonth('may')).to.be.a('number');
+      });
+      it("if jun is typed in, return 6 for the month", () => {
+        expect(para.checkMonth('jun')).to.equal(6);
+        expect(para.checkMonth('jun')).to.be.a('number');
+      });
+      it("if jul is typed in, return 7 for the month", () => {
+        expect(para.checkMonth('jul')).to.equal(7);
+        expect(para.checkMonth('jul')).to.be.a('number');
+      });
+      it("if aug is typed in, return 8 for the month", () => {
+        expect(para.checkMonth('aug')).to.equal(8);
+        expect(para.checkMonth('aug')).to.be.a('number');
+      });
+      it("if sep is typed in, return 9 for the month", () => {
+        expect(para.checkMonth('sep')).to.equal(9);
+        expect(para.checkMonth('sep')).to.be.a('number');
+      });
+      it("if oct is typed in, return 10 for the month", () => {
+        expect(para.checkMonth('oct')).to.equal(10);
+        expect(para.checkMonth('oct')).to.be.a('number');
+      });
+      it("if nov is typed in, return 11 for the month", () => {
+        expect(para.checkMonth('nov')).to.equal(11);
+        expect(para.checkMonth('nov')).to.be.a('number');
+      });
+      it("if dec is typed in, return 12 for the month", () => {
+        expect(para.checkMonth('dec')).to.equal(12);
+        expect(para.checkMonth('dec')).to.be.a('number');
+      });
+    });
 
   });
 });
-
