@@ -34,14 +34,14 @@ Running `./cal.js <year>` with a four digit year between 1753 and 9999 (inclusiv
 
 If the year chosen is outside the range or illegible
 
-![Year Output](doc-images/Bad-year.png)
+![Invalid Year Input](doc-images/Bad-year.png)
 
 
 Running `./cal.js <month> <year>` with a valid year and month will display that particular month and year.  1753 and 9999 (inclusive) will display a full calendar year.
 
-![Year Output](doc-images/Running-month-year.png)
+![Month Output](doc-images/Running-month-year.png)
 
 
 A valid month must either be a number between 1-12 inclusive, the full month name, or a three letter abreviation of a month name.
 
-![Year Output](doc-images/Bad-month.png)
+![Invalid Month Output](doc-images/Bad-month.png)
