@@ -42,6 +42,6 @@ Running `./cal.js <month> <year>` with a valid year and month will display that 
 ![Month Output](doc-images/Running-month-year.png)
 
 
-A valid month must either be a number between 1-12 inclusive, the full month name, or a three letter abreviation of a month name.
+A valid month must either be a number between 1-12 inclusive, the full month name, or a three letter abbreviation of a month name.
 
 ![Invalid Month Output](doc-images/Bad-month.png)
